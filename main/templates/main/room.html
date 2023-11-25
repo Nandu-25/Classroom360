@@ -1273,7 +1273,6 @@
      {{tea_on | json_script:"tea_on"}}
     <script>
       var raiseHand = JSON.parse(document.getElementById('raise_hand').textContent);
-      //console.log(raiseHand);
       var tea_on = JSON.parse(document.getElementById('tea_on').textContent);
       console.log("tea_on "+tea_on);
       if(tea_on){
@@ -1287,33 +1286,19 @@
       const enroll1 = JSON.parse(document.getElementById('enroll').textContent);
       const enroll = enroll1.slice(-2);
       const seat_selec = JSON.parse(document.getElementById('seat_selec').textContent);
-      //console.log(seat_selec);
       var nand=seat_selec;
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
         const username = JSON.parse(document.getElementById('username').textContent);
         const role = JSON.parse(document.getElementById('role').textContent);
         const email = JSON.parse(document.getElementById('email').textContent);
-      //console.log("hi0");
       var myArray;
       var myArray2;
-      
-        // This code will run after the HTML is fully loaded.
          myArray = JSON.parse(document.getElementById('datain').textContent);
         console.log(myArray);
         myArray2 = JSON.parse(myArray);
         console.log(typeof myArray2);
         console.log(myArray2.length)
        
-       // console.log("hi");
-    
-    console.log("hi");
-    
-
-    
-    //console.log("hi2");
-
-
-      //window.onload = loadMessages; 
       
         const chatSocket = new WebSocket(
             'ws://'
@@ -1322,15 +1307,7 @@
             +roomName
             +'/'
         );
-       // socket.addEventListener('open', (event) => {
-          
-      //    const initialMessage = {
-      //        type: 'initial_message',
-      //        content: 'Hello, server!',
-     //     };
-          
-        //  socket.send(JSON.stringify(initialMessage));
-     // });
+
         chatSocket.onmessage = function(e){
             const data = JSON.parse(e.data);
             console.log(data);
@@ -1383,7 +1360,7 @@
               
             } 
             if(data.hasOwnProperty('raise_hand')){
-              //console.log(data);
+
               var id_seat = (data.seat);
               console.log("seat id is");
               console.log(id_seat);
@@ -1407,7 +1384,6 @@
 
             else{
               if(data.hasOwnProperty('seat')){
-                console.log(data);
                 
                 var seatid = (data.seat)
                 var seator = document.getElementById(`${seatid}`);
@@ -1429,8 +1405,6 @@
               }
             }
             if(data.hasOwnProperty('he_left')){
-              console.log("he left data");
-              console.log(data);
               var st_id = (data.seat_id_name);
               var rolet = (data.role);
               if(rolet == "teacher"){
@@ -1456,8 +1430,6 @@
 
             }
             if(data.hasOwnProperty('he_is_back')){
-              console.log("he is backdropleft data");
-              console.log(data);
               var st_id = (data.seat_id_name);
               var enrof = (data.enrof);
               var rolet = (data.role);
@@ -1639,7 +1611,6 @@
           'room':roomName,
           'email':email
         }));
-        //console.log(userMessage);
         chatInput.value = "";
         chatInput.style.height = `${inputInitHeight}px`;
         chatbox[i].appendChild(createChatLi(userMessage));
@@ -1715,7 +1686,6 @@ var m=0;
             }
       
     for(var z=0;z<myArray2.length;z++){
-      //console.log("hi");
       var mes = myArray2[z].content;
       var user = myArray2[z].user;
       var iden = myArray2[z].i;
@@ -1746,8 +1716,6 @@ var m=0;
       }
     } 
     function sendSeat(){
-      console.log("nand inside");
-      console.log(nand);
       chatSocket.send(JSON.stringify({
         'user':email,
         'seat':nand,
@@ -1757,18 +1725,15 @@ var m=0;
     }
     seatArray = JSON.parse(document.getElementById('seatsin').textContent);
     seatArray2 = JSON.parse(seatArray);
-   // console.log(typeof seatArray2);
-     console.log(seatArray2); 
+
     
     for(var w=0;w<seatArray2.length;w++){
-      //console.log("hi");
       var seatU = seatArray2[w];
       var seat_id = seatArray2[w].seat;
       
       var enro = seatArray2[w].enroll;
       var onl = seatArray2[w].is_online;
-      
-      //console.log(enro);
+
       var rh = seatArray2[w].raise_hand;
       console.log("is online is "+onl);
       if(onl){
@@ -1787,8 +1752,6 @@ var m=0;
                   seator.classList.remove('AbsentSeat');
                   seator.classList.add('Raisehand');
                 }
-                //console.log("hi after enro");
-                
                 
   
         }
@@ -1815,7 +1778,6 @@ var m=0;
       
 
     }
-    //const email = JSON.parse(document.getElementById('email').textContent);
     function send_raise(){
       if(!raiseHand){
         raiseHand = true;
@@ -1850,9 +1812,7 @@ var m=0;
       }));
 
     }
-    //chatSocket.addEventListener('close', (event) => {
-      
-  //});
+ 
   {% comment %} console.log("exit message sent");
       chatSocket.send(JSON.stringify({
         
