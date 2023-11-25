@@ -329,11 +329,7 @@
               addressInput=addressInput.substring(0,200);
           }
           addressElement.innerHTML = addressInput;
-        //   document.getElementById("inputState").disabled = true;
-        //   document.getElementById("inputDistrict").disabled = true;
-  
-          // Address auto-resizing
-          addressElement.style.height = "auto"; // Let it auto-resize vertically
+          addressElement.style.height = "auto"; 
           addressElement.style.overflow = "hidden";
           addressElement.style.height = (addressElement.scrollHeight) + "px";
       } else {
@@ -345,7 +341,6 @@
               alert("Please verify your pincode");
           }
       }
-      console.log("hiii");
     }
     function OpenTab(TabName) {
     var i;
@@ -420,12 +415,12 @@
       addressElement.style.border="none";
       const addressInput = document.createElement("textarea");
       addressInput.style.width = "700px";
-      addressInput.style.height = "auto"; // Let it auto-resize vertically
+      addressInput.style.height = "auto"; 
       addressInput.style.border = "2px solid black";
       addressInput.style.borderRadius = "15px";
       addressInput.value = originalAddress;
   
-      addressElement.innerHTML = ''; // Clear the existing content
+      addressElement.innerHTML = ''; 
       addressElement.appendChild(addressInput);
       addressInput.id = "Address-input";
       document.getElementById("MobileNumberDisplay").style.display = "none";
